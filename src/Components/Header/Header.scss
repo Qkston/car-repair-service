@@ -1,0 +1,49 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+
+	&-logo {
+		display: flex;
+		align-items: center;
+
+		&-text {
+			margin-left: 20px;
+
+			font-family: "Kdam Thmor Pro", sans-serif;
+			font-size: 36px;
+			font-weight: bold;
+
+			cursor: default;
+		}
+	}
+
+	&-nav-menu {
+		display: flex;
+		align-items: center;
+
+		font-size: 24px;
+
+		&-item {
+			width: 100px;
+			padding: 10px;
+
+			text-align: center;
+
+			border-radius: 4px;
+			transition: 0.2s;
+			cursor: pointer;
+
+			&:hover {
+				background: #ececec;
+			}
+		}
+
+		.login {
+			border: 1px solid #000;
+
+			&-text {
+				font-weight: bold;
+			}
+		}
+	}
+}
