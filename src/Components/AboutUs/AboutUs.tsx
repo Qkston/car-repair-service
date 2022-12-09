@@ -25,20 +25,22 @@ const AboutUs = () => {
 	};
 
 	return (
-		<div className="about-us">
-			<div className="about-us-header">
-				<input type="image" src={wind} alt="Image" className="about-us-header-image" />
-				<div className="about-us-header-text">
-					<h3 className="about-us-header-text-title">about us</h3>
-					<p className="about-us-header-text-description">At meter per second, we take pride in our values</p>
-					<p className="about-us-header-text-description">- service,integrity and excellece.</p>
+		<div className="wrapper">
+			<div className="about-us">
+				<div className="about-us-header">
+					<input type="image" src={wind} alt="Image" className="about-us-header-image" />
+					<div className="about-us-header-text">
+						<h3 className="about-us-header-text-title">about us</h3>
+						<p className="about-us-header-text-description">At meter per second, we take pride in our values</p>
+						<p className="about-us-header-text-description">- service,integrity and excellece.</p>
+					</div>
+					<input type="image" src={wind} alt="Image" className="about-us-header-image" />
 				</div>
-				<input type="image" src={wind} alt="Image" className="about-us-header-image" />
-			</div>
-			<div className="about-us-points-wrapper">
-				{<Point number="1." title="Who we are?" description={firstPointDesc} />}
-				{<Point number="2." title="What is the problem?" description={secondPointDesc} />}
-				{<Point number="3." title="How do we help?" description={thirdPointDesc} />}
+				<div className="about-us-points-wrapper">
+					{<Point number="1." title="Who we are?" description={firstPointDesc} />}
+					{<Point number="2." title="What is the problem?" description={secondPointDesc} />}
+					{<Point number="3." title="How do we help?" description={thirdPointDesc} />}
+				</div>
 			</div>
 		</div>
 	);
