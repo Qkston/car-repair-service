@@ -20,5 +20,5 @@
 		"noEmit": true
 	},
 	"exclude": ["node_modules", "**/node_modules/*"],
-	"include": ["src", "electron/renderer.ts"]
+	"include": ["src", "./index.d.ts"]
 }
