@@ -8,4 +8,13 @@
 		font-size: 46px;
 		text-align: center;
 	}
+
+	&-main {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		column-gap: 25px;
+		row-gap: 25px;
+		column-count: 4;
+	}
 }

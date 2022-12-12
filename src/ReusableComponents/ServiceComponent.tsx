@@ -2,16 +2,16 @@ import styled from "styled-components";
 
 type ServiceComponentProps = {
 	imageURL: string;
-	number: string;
+	price: string;
 	title: string;
 };
 
-const ServiceComponent = ({ imageURL, number, title }: ServiceComponentProps) => {
+const ServiceComponent = ({ imageURL, price, title }: ServiceComponentProps) => {
 	return (
-		<Wrapper>
+		<Wrapper key={imageURL + price + title}>
 			<Header>
 				<Image src={imageURL} alt="Service's image" />
-				<Number>{number}</Number>
+				<Number>{price} UAH.</Number>
 			</Header>
 			<Title>{title}</Title>
 			<Button>Enquire Us</Button>
@@ -20,6 +20,9 @@ const ServiceComponent = ({ imageURL, number, title }: ServiceComponentProps) =>
 };
 
 const Wrapper = styled.div`
+	position: relative;
+	width: 300px;
+	height: 300px;
 	padding: 50px 25px;
 	border: 1px solid #21354666;
 `;
@@ -27,17 +30,18 @@ const Wrapper = styled.div`
 const Header = styled.div`
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	margin-bottom: 30px;
+	height: 96px;
 `;
 
 const Image = styled.img`
-	width: 64px;
-	height: 64px;
+	height: 80%;
 `;
 
 const Number = styled.p`
 	font-size: 32px;
-	color: #e5e5e5;
+	font-weight: bold;
 `;
 
 const Title = styled.p`
@@ -47,6 +51,9 @@ const Title = styled.p`
 `;
 
 const Button = styled.button`
+	position: absolute;
+	bottom: 50px;
+
 	width: 200px;
 	height: 50px;
 	background: #f5f5f5;
@@ -57,6 +64,13 @@ const Button = styled.button`
 	text-align: center;
 	letter-spacing: 0.1em;
 	color: #1f1f1f;
+
+	transition: 0.2s;
+	cursor: pointer;
+
+	&:hover {
+		background: #e9e743;
+	}
 `;
 
 export default ServiceComponent;
