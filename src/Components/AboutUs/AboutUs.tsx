@@ -25,7 +25,7 @@ const AboutUs = () => {
 	};
 
 	return (
-		<div className="wrapper">
+		<div id="about-us" className="wrapper">
 			<div className="about-us">
 				<div className="about-us-header">
 					<input type="image" src={wind} alt="Image" className="about-us-header-image" />

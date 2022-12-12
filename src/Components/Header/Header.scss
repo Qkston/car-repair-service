@@ -1,6 +1,7 @@
 .header {
 	display: flex;
 	justify-content: space-between;
+	background: #fff;
 
 	&-logo {
 		display: flex;
@@ -36,14 +37,6 @@
 
 			&:hover {
 				background: #ececec;
-			}
-		}
-
-		.login {
-			border: 1px solid #000;
-
-			&-text {
-				font-weight: bold;
 			}
 		}
 	}
