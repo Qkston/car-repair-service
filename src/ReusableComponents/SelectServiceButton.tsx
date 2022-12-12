@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const SelectServiceButton = () => {
-	return <Button>Select a services</Button>;
+	return <Button onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}>Select a services</Button>;
 };
 
 const Button = styled.button`
