@@ -3,17 +3,17 @@ import styled from "styled-components";
 type ServiceComponentProps = {
 	imageURL: string;
 	price: string;
-	title: string;
+	name: string;
 };
 
-const ServiceComponent = ({ imageURL, price, title }: ServiceComponentProps) => {
+const ServiceComponent = ({ imageURL, price, name }: ServiceComponentProps) => {
 	return (
-		<Wrapper key={imageURL + price + title}>
+		<Wrapper key={imageURL + price + name}>
 			<Header>
 				<Image src={imageURL} alt="Service's image" />
 				<Number>{price} UAH.</Number>
 			</Header>
-			<Title>{title}</Title>
+			<Title>{name}</Title>
 			<Button>Enquire Us</Button>
 		</Wrapper>
 	);

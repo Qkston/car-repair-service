@@ -8,45 +8,4 @@ import img6 from "./images/image 31.png";
 import img7 from "./images/image 32.png";
 import img8 from "./images/image 33.png";
 
-export default [
-	{
-		title: "General Service",
-		price: "800",
-		imageURL: img1,
-	},
-	{
-		title: "Denting and Painting",
-		price: "1200",
-		imageURL: img2,
-	},
-	{
-		title: "Car Inspection",
-		price: "500",
-		imageURL: img3,
-	},
-	{
-		title: "Battery replacement",
-		price: "1000",
-		imageURL: img4,
-	},
-	{
-		title: "AC service & repair",
-		price: "900",
-		imageURL: img5,
-	},
-	{
-		title: "Car fitments",
-		price: "700",
-		imageURL: img6,
-	},
-	{
-		title: "Car Detailing Services",
-		price: "800",
-		imageURL: img7,
-	},
-	{
-		title: "Car major repairs",
-		price: "900",
-		imageURL: img8,
-	},
-];
+export default [img1, img2, img3, img4, img5, img6, img7, img8];
