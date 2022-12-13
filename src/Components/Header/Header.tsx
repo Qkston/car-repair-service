@@ -3,7 +3,7 @@ import "./Header.scss";
 import Logo from "../../ReusableComponents/Logo";
 import SelectServiceButton from "../../ReusableComponents/SelectServiceButton";
 
-const Header = () => {
+const Header = ({ onOpenCart }: { onOpenCart: () => void }) => {
 	return (
 		<>
 			<div className="header">
@@ -21,7 +21,7 @@ const Header = () => {
 					<div className="header-nav-menu-item" onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}>
 						<span className="header-nav-menu-item-text">Services</span>
 					</div>
-					<div className="header-nav-menu-item login">
+					<div className="header-nav-menu-item login" onClick={onOpenCart}>
 						<span className="header-nav-menu-item-text login-text">
 							<CgShoppingCart size={28} />
 						</span>

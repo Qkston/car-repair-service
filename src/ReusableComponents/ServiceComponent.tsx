@@ -1,12 +1,16 @@
 import styled from "styled-components";
+import { Service } from "../Components/Services/Services";
 
 type ServiceComponentProps = {
 	imageURL: string;
+	id: number;
 	price: string;
 	name: string;
+	isAdded?: boolean;
+	onClick: (service: Service) => void;
 };
 
-const ServiceComponent = ({ imageURL, price, name }: ServiceComponentProps) => {
+const ServiceComponent = ({ imageURL, id, price, name, isAdded, onClick }: ServiceComponentProps) => {
 	return (
 		<Wrapper key={imageURL + price + name}>
 			<Header>
@@ -14,7 +18,9 @@ const ServiceComponent = ({ imageURL, price, name }: ServiceComponentProps) => {
 				<Number>{price} UAH.</Number>
 			</Header>
 			<Title>{name}</Title>
-			<Button>Enquire Us</Button>
+			<AddButton isAdded={!!isAdded} onClick={() => onClick({ id, name, price })}>
+				{isAdded ? "In the cart" : "Add to cart"}
+			</AddButton>
 		</Wrapper>
 	);
 };
@@ -50,13 +56,13 @@ const Title = styled.p`
 	margin-bottom: 30px;
 `;
 
-const Button = styled.button`
+const AddButton = styled.button`
 	position: absolute;
 	bottom: 50px;
 
 	width: 200px;
 	height: 50px;
-	background: #f5f5f5;
+	background: ${(props: { isAdded: boolean }) => (props.isAdded ? "#e9e743" : "#f5f5f5")};
 	border: 2px solid #e9e743;
 	border-radius: 10px;
 	font-weight: 500;
@@ -69,7 +75,7 @@ const Button = styled.button`
 	cursor: pointer;
 
 	&:hover {
-		background: #e9e743;
+		background: ${(props: { isAdded: boolean }) => (props.isAdded ? "#f5f5f5" : "#e9e743")};
 	}
 `;
 

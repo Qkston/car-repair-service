@@ -4,20 +4,26 @@ import images from "./data";
 import { getServices } from "../../services/car_services";
 import "./Services.scss";
 
-interface Service {
+type ServicesProps = {
+	selectedServices: Service[];
+	onSelectService: (service: Service) => void;
+	onRemoveService: (service: Service) => void;
+};
+
+export interface Service {
 	id: number;
 	name: string;
 	price: string;
 }
 
-const Services = () => {
-	const [services, setServices] = useState<Service[]>([]);
+const Services = ({ selectedServices, onSelectService, onRemoveService }: ServicesProps) => {
+	const [allServices, setAllServices] = useState<Service[]>([]);
 
 	useEffect(() => {
 		async function getAllServices() {
 			try {
 				const services = await getServices();
-				setServices(services);
+				setAllServices(services);
 			} catch (err) {
 				console.log(err);
 			}
@@ -30,9 +36,18 @@ const Services = () => {
 		<div id="services" className="services">
 			<h3 className="services-title">Our services</h3>
 			<div className="services-main">
-				{services.map((s, i) => (
-					<ServiceComponent {...s} imageURL={images[i]} />
-				))}
+				{allServices.map((s, i) => {
+					const isAdded = selectedServices.some(({ id }) => s.id === id);
+					return (
+						<ServiceComponent
+							key={s.id}
+							{...s}
+							imageURL={images[i]}
+							onClick={service => (isAdded ? onRemoveService(service) : onSelectService(service))}
+							isAdded={isAdded}
+						/>
+					);
+				})}
 			</div>
 		</div>
 	);
