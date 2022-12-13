@@ -2,6 +2,7 @@ const express = require("express");
 const { Client } = require("pg");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const sendpulse = require("sendpulse-api");
 
 const app = express();
 app.use(cors());
@@ -38,6 +39,37 @@ app.post("/api/order/create", jsonParser, (req, res) => {
 		console.log("Created!");
 
 		res.send(result.rows);
+	});
+});
+
+const API_USER_ID = "66055c03623b28c3be74340ce3b3f43c";
+const API_SECRET = "2eba6ed23dc5e0748fac563d13218355";
+const TOKEN_STORAGE = "/tmp/";
+
+app.post("/api/mail/send", jsonParser, (req, res) => {
+	const services = req.body.services_names;
+	const email = req.body.customer_email;
+	const price = req.body.total_price;
+	const time = req.body.order_time;
+
+	sendpulse.init(API_USER_ID, API_SECRET, TOKEN_STORAGE, function () {
+		sendpulse.smtpSendMail(() => {}, {
+			text: `Hi. You have a new order.
+	    Customer Email: ${email};
+	    Services ordered: ${services} (${price} UAH.);
+	    Order time: ${new Date(time).toLocaleString("uk-UA")}`,
+			subject: "[Car Repair Service] New order of services",
+			from: {
+				name: "Andrii Slynko (Notifier)",
+				email: "slynko.andrii1119@vu.cdu.edu.ua",
+			},
+			to: [
+				{
+					name: "Andrii Slynko",
+					email: "qkston22@gmail.com",
+				},
+			],
+		});
 	});
 });
 

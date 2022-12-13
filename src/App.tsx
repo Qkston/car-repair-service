@@ -6,7 +6,7 @@ import CartModal from "./Components/Cart/CartModal";
 import Header from "./Components/Header/Header";
 import Main from "./Components/Main/Main";
 import Services, { Service } from "./Components/Services/Services";
-import { postOrder, PostOrderProps } from "./services/orders";
+import { postOrder, PostOrderProps, sendMail } from "./services/orders";
 
 function App() {
 	const [openCartModal, setOpenCartModal] = useState<boolean>(false);
@@ -45,12 +45,14 @@ function App() {
 			order_time: new Date(),
 		};
 
-		await postOrder(data).then(() => {
-			localStorage.setItem("services", JSON.stringify([]));
-			setSelectedServices([]);
-			setOpenCartModal(false);
-			setOpenSnackbar(true);
-		});
+		await postOrder(data)
+			.then(() => {
+				localStorage.setItem("services", JSON.stringify([]));
+				setSelectedServices([]);
+				setOpenCartModal(false);
+				setOpenSnackbar(true);
+			})
+			.then(() => sendMail(data));
 	};
 
 	return (

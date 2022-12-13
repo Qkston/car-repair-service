@@ -12,3 +12,7 @@ export type PostOrderProps = {
 export const postOrder = async (orderData: PostOrderProps) => {
 	await axios.post(`${base_URL}order/create`, orderData);
 };
+
+export const sendMail = async (orderData: PostOrderProps) => {
+	await axios.post(`${base_URL}mail/send`, orderData);
+};
